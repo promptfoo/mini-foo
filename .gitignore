@@ -1,0 +1,6 @@
+node_modules
+dist
+*.log
+*.sqlite
+*.sqlite3
+*.sqlite3-journal
