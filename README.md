@@ -1,6 +1,3 @@
-I'll help create a comprehensive README for the project.
-
-```markdown:README.md
 # Mini-foo
 
 A simple evaluation results viewer with a React frontend and Express backend.
