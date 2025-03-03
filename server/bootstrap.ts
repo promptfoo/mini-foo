@@ -1,7 +1,11 @@
 import Database from "better-sqlite3";
 import { evals, evalResults } from "./sample_data";
+import fs from "fs";
 
-const db = new Database("db.sqlite");
+// Check if database file exists and has data
+const dbPath = "db.sqlite";
+
+const db = new Database(dbPath);
 
 db.exec(
   "CREATE TABLE IF NOT EXISTS evals (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)"
@@ -13,34 +17,55 @@ db.exec(
 
 // Insert sample evaluation data
 const insertEvals = () => {
-  const stmt = db.prepare(
-    "INSERT OR IGNORE INTO evals (id, name) VALUES (?, ?)"
-  );
+  // Check if data already exists
+  const existingCount = (
+    db.prepare("SELECT COUNT(*) as count FROM evals").get() as any
+  ).count;
 
-  evals.forEach((eval_) => {
-    stmt.run(eval_.id, eval_.name);
-  });
+  if (existingCount === 0) {
+    const stmt = db.prepare(
+      "INSERT OR IGNORE INTO evals (id, name) VALUES (?, ?)"
+    );
 
-  console.log("Sample evals inserted");
+    evals.forEach((eval_) => {
+      stmt.run(eval_.id, eval_.name);
+    });
+
+    console.log("Sample evals inserted");
+  } else {
+    console.log("Evals table already contains data, skipping insertion");
+  }
 };
 
 // Insert sample evaluation results
 const insertEvalResults = () => {
-  const stmt = db.prepare(
-    "INSERT OR IGNORE INTO eval_results (id, eval_id, input, output, passed) VALUES (?, ?, ?, ?, ?)"
-  );
+  // Check if data already exists
+  const existingCount = (
+    db.prepare("SELECT COUNT(*) as count FROM eval_results").get() as any
+  ).count;
 
-  evalResults.forEach((result) => {
-    stmt.run(
-      result.id,
-      result.evalId,
-      result.input,
-      result.output,
-      result.passed
+  if (existingCount === 0) {
+    const stmt = db.prepare(
+      "INSERT OR IGNORE INTO eval_results (id, eval_id, input, output, passed) VALUES (?, ?, ?, ?, ?)"
     );
-  });
 
-  console.log("Sample eval results inserted");
+    evalResults.forEach((result) => {
+      // Convert boolean to integer (0 or 1) for SQLite compatibility
+      const passedValue = result.passed ? 1 : 0;
+
+      stmt.run(
+        result.id,
+        result.evalId,
+        result.input,
+        result.output,
+        passedValue
+      );
+    });
+
+    console.log("Sample eval results inserted");
+  } else {
+    console.log("Eval results table already contains data, skipping insertion");
+  }
 };
 
 // Remove db.serialize() - better-sqlite3 doesn't have this method

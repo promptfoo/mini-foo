@@ -18,24 +18,12 @@ mini-foo/
 
 ## Getting Started
 
-### Backend Setup
-
-1. Navigate to the server directory:
-```bash
-cd server
-```
-
-2. Install dependencies:
+1. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Initialize the database:
-```bash
-npm run bootstrap
-```
-
-4. Start the server:
+2. Start the server:
 ```bash
 npm start
 ```
