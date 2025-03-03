@@ -4,8 +4,9 @@
   "description": "mini foo interview",
   "main": "index.js",
   "scripts": {
+    "postinstall": "cd server && npm install && cd ../app && npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run start --prefix server\" \"npm run start --prefix app\""
+    "start": "concurrently \"npm run start --prefix server\" \"npm run start --prefix app\""
   },
   "author": "",
   "license": "ISC",
