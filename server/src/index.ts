@@ -4,15 +4,10 @@ import cors from "cors";
 
 const app = express();
 
-// Add cors middleware
 app.use(cors());
 
 app.listen(8085, () => {
   console.log("Server is running on port 8085");
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
 });
 
 app.get("/evals", async (req, res) => {
