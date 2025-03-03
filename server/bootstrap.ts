@@ -2,7 +2,6 @@ import Database from "better-sqlite3";
 import { evals, evalResults } from "./sample_data";
 import fs from "fs";
 
-// Check if database file exists and has data
 const dbPath = "db.sqlite";
 
 const db = new Database(dbPath);
@@ -15,7 +14,6 @@ db.exec(
   "CREATE TABLE IF NOT EXISTS eval_results (id INTEGER PRIMARY KEY AUTOINCREMENT, eval_id INTEGER, input TEXT, output TEXT, passed BOOLEAN)"
 );
 
-// Insert sample evaluation data
 const insertEvals = () => {
   // Check if data already exists
   const existingCount = (
@@ -37,7 +35,6 @@ const insertEvals = () => {
   }
 };
 
-// Insert sample evaluation results
 const insertEvalResults = () => {
   // Check if data already exists
   const existingCount = (
@@ -68,8 +65,6 @@ const insertEvalResults = () => {
   }
 };
 
-// Remove db.serialize() - better-sqlite3 doesn't have this method
-// Just call the functions directly
 insertEvals();
 insertEvalResults();
 console.log("Database initialization complete");

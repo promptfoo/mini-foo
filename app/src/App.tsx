@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 
-// Update interfaces to match server types
 interface EvalResult {
   id: number;
   evalId: number;
