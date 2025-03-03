@@ -1,6 +1,5 @@
 import Database from "better-sqlite3";
 import { evals, evalResults } from "./sample_data";
-import fs from "fs";
 
 const dbPath = "db.sqlite";
 
