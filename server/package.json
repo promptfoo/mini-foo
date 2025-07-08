@@ -1,5 +1,5 @@
 {
-  "name": "promptfoo-server",
+  "name": "mini-foo-server",
   "version": "0.1.0",
   "description": "Backend API for evaluation results viewer",
   "main": "index.ts",
