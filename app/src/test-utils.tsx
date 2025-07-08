@@ -4,9 +4,7 @@ import { render, RenderOptions } from '@testing-library/react';
 // Custom render function that includes providers
 // This is useful when you add context providers, routers, etc.
 
-interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
-  // Add any custom options here
-}
+type CustomRenderOptions = Omit<RenderOptions, 'wrapper'>;
 
 export function customRender(
   ui: React.ReactElement,
@@ -35,14 +33,30 @@ export * from '@testing-library/react';
 export { customRender as render };
 
 // Mock data generators
-export const mockEval = (overrides = {}) => ({
+interface MockEval {
+  id: number;
+  name: string;
+  results: unknown[];
+}
+
+interface MockEvalResult {
+  id: number;
+  evalId: number;
+  input: string;
+  output: string;
+  passed: boolean;
+}
+
+export const mockEval = (overrides: Partial<MockEval> = {}): MockEval => ({
   id: 1,
   name: 'Test Evaluation',
   results: [],
   ...overrides,
 });
 
-export const mockEvalResult = (overrides = {}) => ({
+export const mockEvalResult = (
+  overrides: Partial<MockEvalResult> = {}
+): MockEvalResult => ({
   id: 1,
   evalId: 1,
   input: 'test input',
@@ -52,6 +66,8 @@ export const mockEvalResult = (overrides = {}) => ({
 });
 
 // Common test utilities
+import { waitFor } from '@testing-library/react';
+
 export const waitForLoadingToFinish = () =>
   waitFor(() => {
     expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();

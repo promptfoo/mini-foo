@@ -1,16 +1,7 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-
 // Since we don't have a separate component, this is a placeholder
 // In a real app, you'd extract the dropdown to its own component
 
 describe('EvaluationDropdown Component', () => {
-  const mockEvals = [
-    { id: 1, name: 'Test Eval 1', results: [] },
-    { id: 2, name: 'Test Eval 2', results: [] },
-  ];
-
   const mockOnChange = jest.fn();
 
   beforeEach(() => {

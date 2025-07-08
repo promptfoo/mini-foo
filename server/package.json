@@ -5,9 +5,10 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "test": "echo \"Tests are configured but not implemented yet\"",
+    "test": "tsx --test src/**/*.test.ts",
     "bootstrap": "tsx bootstrap.ts",
-    "start": "tsx bootstrap.ts && nodemon --exec tsx src/index.ts"
+    "start": "tsx bootstrap.ts && nodemon --exec tsx src/index.ts",
+    "build": "tsc --noEmit"
   },
   "author": "Promptfoo Team",
   "license": "MIT",

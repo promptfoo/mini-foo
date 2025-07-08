@@ -12,7 +12,8 @@
     "test": "npm run test --workspaces",
     "start": "concurrently \"npm run start -w server\" \"npm run start -w app\"",
     "lint": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "author": "Promptfoo Team",
   "license": "MIT",

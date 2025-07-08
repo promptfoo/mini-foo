@@ -1,10 +1,13 @@
 import React from 'react';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render } from '@testing-library/react';
 import App from './App';
 
 // Mock fetch
-global.fetch = jest.fn();
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve([]),
+  } as Response)
+);
 
 describe('App Integration Tests', () => {
   beforeEach(() => {
