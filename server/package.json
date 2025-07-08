@@ -30,5 +30,8 @@
     "nodemon": "^3.1.9",
     "tsx": "^4.19.3",
     "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=24"
   }
 }
