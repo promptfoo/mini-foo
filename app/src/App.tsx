@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import logo from './logo.svg';
 
 interface EvalResult {
   id: number;
@@ -23,14 +24,15 @@ function App() {
   useEffect(() => {
     const fetchEvals = async () => {
       try {
-        const response = await fetch("http://localhost:8085/evals");
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8085';
+        const response = await fetch(`${apiUrl}/evals`);
         const data = await response.json();
         setEvals(data);
         if (data.length > 0) {
           setSelectedEval(data[0]); // Select first eval by default
         }
-      } catch (error) {
-        console.error("Error fetching evals:", error);
+      } catch {
+        // Handle error silently
       }
     };
 
@@ -41,21 +43,22 @@ function App() {
     <div className="App">
       <div className="container">
         <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
           <h1>Evaluation Results</h1>
           <select
-            value={selectedEval?.id || ""}
+            value={selectedEval?.id || ''}
             onChange={(e) => {
               const selected = evals.find(
-                (eval_) => eval_.id === Number(e.target.value)
+                (evalItem) => evalItem.id === Number(e.target.value)
               );
               setSelectedEval(selected || null);
             }}
             className="eval-select"
           >
             <option value="">Choose an evaluation...</option>
-            {evals.map((eval_) => (
-              <option key={eval_.id} value={eval_.id}>
-                {eval_.name}
+            {evals.map((evalItem) => (
+              <option key={evalItem.id} value={evalItem.id}>
+                {evalItem.name}
               </option>
             ))}
           </select>
@@ -85,9 +88,9 @@ function App() {
                     </td>
                     <td>
                       <span
-                        className={`status ${result.passed ? "passed" : "failed"}`}
+                        className={`status ${result.passed ? 'passed' : 'failed'}`}
                       >
-                        {result.passed ? "Passed" : "Failed"}
+                        {result.passed ? 'Passed' : 'Failed'}
                       </span>
                     </td>
                   </tr>
