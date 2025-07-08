@@ -3,8 +3,6 @@
 // Placeholder for a custom hook that could be extracted
 // In a real app, you'd extract the data fetching logic to a custom hook
 
-export {};
-
 describe('useEvaluations Hook', () => {
   beforeEach(() => {
     global.fetch = jest.fn();

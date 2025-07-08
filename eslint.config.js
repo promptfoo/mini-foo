@@ -23,6 +23,9 @@ export default [
       parser: tsParser,
       ecmaVersion: 'latest',
       sourceType: 'module',
+      parserOptions: {
+        warnOnUnsupportedTypeScriptVersion: false,
+      },
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
@@ -32,6 +35,12 @@ export default [
       '@typescript-eslint/no-unused-vars': 'error',
       'no-console': 'warn',
       'prefer-const': 'error',
+    },
+  },
+  {
+    files: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
+    rules: {
+      '@typescript-eslint/no-empty-function': 'off',
     },
   },
 ];
