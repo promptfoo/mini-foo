@@ -5,69 +5,13 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    open-pull-requests-limit: 10
-    groups:
-      dev-dependencies:
-        patterns:
-          - "@types/*"
-          - "eslint*"
-          - "prettier*"
-          - "*test*"
-          - "jest*"
-        update-types:
-          - "minor"
-          - "patch"
-      production-dependencies:
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "@types/*"
-          - "eslint*"
-          - "prettier*"
-          - "*test*"
-          - "jest*"
-        update-types:
-          - "minor"
-          - "patch"
-    # Prefix all commit messages with "chore"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
     labels:
       - "dependencies"
-      - "javascript"
-    # Maintain compatibility with existing code
-    versioning-strategy: increase
-
-  # Enable security updates
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    open-pull-requests-limit: 10
-    labels:
-      - "security"
-      - "dependencies"
-    commit-message:
-      prefix: "fix"
-      include: "scope"
-    # Only create PRs for security updates
-    allow:
-      - dependency-type: "all"
-    security-updates-only: true
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "monday"
-      time: "09:00"
-    commit-message:
-      prefix: "ci"
-      include: "scope"
     labels:
-      - "ci"
       - "dependencies"
