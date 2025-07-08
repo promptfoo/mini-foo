@@ -24,7 +24,8 @@ function App() {
   useEffect(() => {
     const fetchEvals = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/evals`);
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8085';
+        const response = await fetch(`${apiUrl}/evals`);
         const data = await response.json();
         setEvals(data);
         if (data.length > 0) {
