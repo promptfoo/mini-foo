@@ -1,7 +1,7 @@
 // End-to-end tests using Playwright or Cypress
 // This is a placeholder for E2E tests
 
-describe('Promptfoo E2E Tests', () => {
+describe('Mini-foo E2E Tests', () => {
   describe('Application Flow', () => {
     it('should load the application', async () => {
       // TODO: Implement E2E test

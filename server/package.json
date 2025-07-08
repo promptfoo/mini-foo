@@ -10,7 +10,7 @@
     "start": "tsx bootstrap.ts && nodemon --exec tsx src/index.ts",
     "build": "tsc --noEmit"
   },
-  "author": "Promptfoo Team",
+  "author": "Mini-foo Team",
   "license": "MIT",
   "keywords": [
     "api",

@@ -15,7 +15,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
-  "author": "Promptfoo Team",
+  "author": "Mini-foo Team",
   "license": "MIT",
   "keywords": [
     "evaluation",

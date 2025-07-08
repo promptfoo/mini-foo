@@ -1,8 +1,6 @@
-# Promptfoo
+# Mini-foo
 
 A simple evaluation results viewer with a React frontend and Express backend.
-
-> **Note**: This repository is named `mini-foo` for historical reasons, but the project itself is called Promptfoo.
 
 ## Project Structure
 

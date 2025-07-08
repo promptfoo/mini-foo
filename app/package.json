@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Frontend application for evaluation results viewer",
   "private": true,
-  "author": "Promptfoo Team",
+  "author": "Mini-foo Team",
   "license": "MIT",
   "dependencies": {
     "react": "^19.0.0",
