@@ -1,6 +1,8 @@
 // Tests for API utility functions
 // In a real app, you'd extract API calls to utility functions
 
+export {};
+
 describe('API Utilities', () => {
   describe('fetchEvaluations', () => {
     it('should call correct endpoint', async () => {

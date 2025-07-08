@@ -43,7 +43,7 @@ export class Eval {
       LEFT JOIN eval_results r ON e.id = r.eval_id
     `
       )
-      .all();
+      .all() as EvalRow[];
 
     const evalsMap = new Map<number, Eval>();
 
@@ -57,9 +57,9 @@ export class Eval {
         eval_.results.push({
           id: row.result_id,
           evalId: row.eval_id,
-          input: row.input,
-          output: row.output,
-          passed: row.passed,
+          input: row.input || '',
+          output: row.output || '',
+          passed: Boolean(row.passed),
         });
       }
     });
@@ -83,7 +83,7 @@ export class Eval {
       WHERE e.id = ?
     `
       )
-      .all(id);
+      .all(id) as EvalRow[];
 
     if (rows.length === 0) {
       return null;
@@ -99,9 +99,9 @@ export class Eval {
         eval_.results.push({
           id: row.result_id,
           evalId: row.eval_id,
-          input: row.input,
-          output: row.output,
-          passed: row.passed,
+          input: row.input || '',
+          output: row.output || '',
+          passed: Boolean(row.passed),
         });
       }
     });

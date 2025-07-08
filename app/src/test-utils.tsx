@@ -66,7 +66,7 @@ export const mockEvalResult = (
 });
 
 // Common test utilities
-import { waitFor } from '@testing-library/react';
+import { waitFor, screen } from '@testing-library/react';
 
 export const waitForLoadingToFinish = () =>
   waitFor(() => {

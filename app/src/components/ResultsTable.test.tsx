@@ -1,6 +1,8 @@
 // Since we don't have a separate component, this is a placeholder
 // In a real app, you'd extract the results table to its own component
 
+export {};
+
 describe('ResultsTable Component', () => {
   it('should render table headers', () => {
     // TODO: Implement test when component is extracted

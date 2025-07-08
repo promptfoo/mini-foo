@@ -1,6 +1,8 @@
 // Since we don't have a separate component, this is a placeholder
 // In a real app, you'd extract the dropdown to its own component
 
+export {};
+
 describe('EvaluationDropdown Component', () => {
   const mockOnChange = jest.fn();
 

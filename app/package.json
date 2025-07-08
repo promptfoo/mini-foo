@@ -19,6 +19,7 @@
     "@types/node": "^16.18.126",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "eslint-config-react-app": "^7.0.1",
     "typescript": "^5.0.0"
   },
   "scripts": {
