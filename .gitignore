@@ -4,3 +4,6 @@ dist
 *.sqlite
 *.sqlite3
 *.sqlite3-journal
+.claude/
+.env
+.DS_Store

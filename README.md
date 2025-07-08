@@ -1,11 +1,11 @@
-# Mini-foo
+# Promptfoo
 
 A simple evaluation results viewer with a React frontend and Express backend.
 
 ## Project Structure
 
 ```
-mini-foo/
+promptfoo/
 ├── app/                # React frontend application
 │   ├── public/        # Static files
 │   ├── src/           # Source files
@@ -19,11 +19,13 @@ mini-foo/
 ## Getting Started
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Start the server:
+
 ```bash
 npm start
 ```
@@ -33,16 +35,19 @@ The server will run on http://localhost:8085
 ### Frontend Setup
 
 1. Navigate to the app directory:
+
 ```bash
 cd app
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm start
 ```
@@ -56,12 +61,14 @@ The application will open in your browser at http://localhost:3007
 ## Technologies Used
 
 ### Frontend
+
 - React
 - TypeScript
 - Create React App
 - Testing Library
 
 ### Backend
+
 - Express
 - better-sqlite3
 - TypeScript
@@ -74,11 +81,8 @@ The application will open in your browser at http://localhost:3007
 - Database schema and sample data are in `server/bootstrap.ts`
 - API models are in `server/src/models/`
 
-
-
 ## Notes
 
 - The frontend runs on port 3007 to avoid conflicts with other services
 - The backend uses SQLite for data storage
 - CORS is enabled on the backend to allow frontend requests
-
