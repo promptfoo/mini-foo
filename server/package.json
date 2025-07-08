@@ -1,27 +1,38 @@
 {
   "name": "mini-foo-server",
-  "version": "0.0.1",
-  "description": "mini foo backend ",
+  "version": "0.1.0",
+  "description": "Backend API for evaluation results viewer",
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tsx --test src/**/*.test.ts",
     "bootstrap": "tsx bootstrap.ts",
-    "start": "tsx bootstrap.ts && nodemon --exec tsx src/index.ts"
+    "start": "tsx bootstrap.ts && nodemon --exec tsx src/index.ts",
+    "build": "tsc --noEmit"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Mini-foo Team",
+  "license": "MIT",
+  "keywords": [
+    "api",
+    "express",
+    "sqlite",
+    "typescript"
+  ],
   "dependencies": {
     "better-sqlite3": "^11.8.1",
     "cors": "^2.8.5",
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cors": "^2.8.19",
     "@types/express": "^4.17.21",
     "@types/node": "^20.0.0",
-    "@types/sqlite3": "^3.1.11",
     "nodemon": "^3.1.9",
     "tsx": "^4.19.3",
     "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

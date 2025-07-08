@@ -1,6 +1,10 @@
 node_modules
 dist
+build
 *.log
 *.sqlite
 *.sqlite3
 *.sqlite3-journal
+.claude/
+.env
+.DS_Store

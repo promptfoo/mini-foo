@@ -1,4 +1,4 @@
-import { db } from "../db";
+import { db } from '../db';
 
 export interface EvalResult {
   id: number;
@@ -6,6 +6,15 @@ export interface EvalResult {
   input: string;
   output: string;
   passed: boolean;
+}
+
+interface EvalRow {
+  eval_id: number;
+  eval_name: string;
+  result_id: number | null;
+  input: string | null;
+  output: string | null;
+  passed: number | null;
 }
 
 export class Eval {
@@ -19,7 +28,7 @@ export class Eval {
     this.results = results;
   }
 
-  static async findAll(): Promise<Eval[]> {
+  static findAll(): Eval[] {
     const rows = db
       .prepare(
         `
@@ -34,11 +43,11 @@ export class Eval {
       LEFT JOIN eval_results r ON e.id = r.eval_id
     `
       )
-      .all();
+      .all() as EvalRow[];
 
     const evalsMap = new Map<number, Eval>();
 
-    rows.forEach((row: any) => {
+    rows.forEach((row: EvalRow) => {
       if (!evalsMap.has(row.eval_id)) {
         evalsMap.set(row.eval_id, new Eval(row.eval_id, row.eval_name));
       }
@@ -48,9 +57,9 @@ export class Eval {
         eval_.results.push({
           id: row.result_id,
           evalId: row.eval_id,
-          input: row.input,
-          output: row.output,
-          passed: row.passed,
+          input: row.input || '',
+          output: row.output || '',
+          passed: Boolean(row.passed),
         });
       }
     });
@@ -58,7 +67,7 @@ export class Eval {
     return Array.from(evalsMap.values());
   }
 
-  static async findById(id: number): Promise<Eval | null> {
+  static findById(id: number): Eval | null {
     const rows = db
       .prepare(
         `
@@ -74,25 +83,25 @@ export class Eval {
       WHERE e.id = ?
     `
       )
-      .all(id);
+      .all(id) as EvalRow[];
 
     if (rows.length === 0) {
       return null;
     }
 
     const eval_ = new Eval(
-      (rows[0] as any).eval_id,
-      (rows[0] as any).eval_name
+      (rows[0] as EvalRow).eval_id,
+      (rows[0] as EvalRow).eval_name
     );
 
-    rows.forEach((row: any) => {
+    rows.forEach((row: EvalRow) => {
       if (row.result_id) {
         eval_.results.push({
           id: row.result_id,
           evalId: row.eval_id,
-          input: row.input,
-          output: row.output,
-          passed: row.passed,
+          input: row.input || '',
+          output: row.output || '',
+          passed: Boolean(row.passed),
         });
       }
     });
@@ -100,23 +109,23 @@ export class Eval {
     return eval_;
   }
 
-  async save(): Promise<void> {
+  save(): void {
     if (this.id) {
       // Update
-      db.prepare("UPDATE evals SET name = ? WHERE id = ?").run(
+      db.prepare('UPDATE evals SET name = ? WHERE id = ?').run(
         this.name,
         this.id
       );
     } else {
       // Insert
       const result = db
-        .prepare("INSERT INTO evals (name) VALUES (?)")
+        .prepare('INSERT INTO evals (name) VALUES (?)')
         .run(this.name);
       this.id = result.lastInsertRowid as number;
     }
   }
 
-  async delete(): Promise<void> {
-    db.prepare("DELETE FROM evals WHERE id = ?").run(this.id);
+  delete(): void {
+    db.prepare('DELETE FROM evals WHERE id = ?').run(this.id);
   }
 }
