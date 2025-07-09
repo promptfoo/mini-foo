@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, RenderOptions } from '@testing-library/react';
+import { expect } from 'vitest';
 
 // Custom render function that includes providers
 // This is useful when you add context providers, routers, etc.

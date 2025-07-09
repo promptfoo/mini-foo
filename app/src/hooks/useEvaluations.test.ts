@@ -2,14 +2,15 @@
 
 // Placeholder for a custom hook that could be extracted
 // In a real app, you'd extract the data fetching logic to a custom hook
+import { vi } from 'vitest';
 
 describe('useEvaluations Hook', () => {
   beforeEach(() => {
-    global.fetch = jest.fn();
+    global.fetch = vi.fn();
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should fetch evaluations on mount', async () => {
