@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import logo from './logo.svg';
 
@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const fetchEvals = async () => {
       try {
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8085';
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8085';
         const response = await fetch(`${apiUrl}/evals`);
         const data = await response.json();
         setEvals(data);

@@ -1,9 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { vi } from 'vitest';
 import App from './App';
 
 // Mock fetch
-global.fetch = jest.fn(() =>
+global.fetch = vi.fn(() =>
   Promise.resolve({
     json: () => Promise.resolve([]),
   } as Response)
@@ -11,11 +12,11 @@ global.fetch = jest.fn(() =>
 
 describe('App Integration Tests', () => {
   beforeEach(() => {
-    (fetch as jest.Mock).mockClear();
+    vi.mocked(fetch).mockClear();
   });
 
   afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   describe('Data fetching', () => {

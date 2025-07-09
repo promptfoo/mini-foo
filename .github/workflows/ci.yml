@@ -43,7 +43,7 @@ jobs:
         run: npm test -w server
 
       - name: Run app tests
-        run: npm test -w app -- --watchAll=false --passWithNoTests
+        run: npm test -w mini-foo-app -- --run
         env:
           CI: true
 
@@ -54,7 +54,7 @@ jobs:
         run: npx tsc --noEmit -p app/tsconfig.json
 
       - name: Build app
-        run: npm run build -w app
+        run: npm run build -w mini-foo-app
         env:
           CI: true
           GENERATE_SOURCEMAP: false

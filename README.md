@@ -49,7 +49,7 @@ npm install
 3. Start the development server:
 
 ```bash
-npm start
+npm run dev
 ```
 
 The application will open in your browser at http://localhost:3007
@@ -64,7 +64,8 @@ The application will open in your browser at http://localhost:3007
 
 - React
 - TypeScript
-- Create React App
+- Vite
+- Vitest
 - Testing Library
 
 ### Backend
@@ -75,6 +76,24 @@ The application will open in your browser at http://localhost:3007
 - Node.js
 
 ## Development
+
+### Available Scripts
+
+From the root directory:
+
+- `npm start` - Start both frontend and backend servers
+- `npm test` - Run tests for all workspaces
+- `npm run lint` - Run ESLint on all files
+- `npm run format` - Format code with Prettier
+
+From the app directory:
+
+- `npm run dev` - Start the Vite development server
+- `npm run build` - Build the app for production
+- `npm test` - Run tests with Vitest
+- `npm run preview` - Preview the production build
+
+### Code Structure
 
 - Frontend code is in `app/src/`
 - Backend code is in `server/src/`

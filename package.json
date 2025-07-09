@@ -10,12 +10,12 @@
   ],
   "scripts": {
     "test": "npm run test --workspaces",
-    "start": "concurrently \"npm run start -w server\" \"npm run start -w app\"",
+    "start": "concurrently \"npm run start -w server\" \"npm run dev -w app\"",
     "lint": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
-  "author": "Mini-foo Team",
+  "author": "Promptfoo Team",
   "license": "MIT",
   "keywords": [
     "evaluation",
