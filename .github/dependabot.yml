@@ -7,6 +7,10 @@ updates:
       interval: 'weekly'
     labels:
       - 'dependencies'
+    commit-message:
+      prefix: 'fix'
+      prefix-development: 'chore'
+      include: 'scope'
 
   # GitHub Actions
   - package-ecosystem: 'github-actions'
@@ -15,3 +19,6 @@ updates:
       interval: 'weekly'
     labels:
       - 'dependencies'
+    commit-message:
+      prefix: 'chore'
+      include: 'scope'
