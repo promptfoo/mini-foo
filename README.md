@@ -80,12 +80,14 @@ The application will open in your browser at http://localhost:3007
 ### Available Scripts
 
 From the root directory:
+
 - `npm start` - Start both frontend and backend servers
 - `npm test` - Run tests for all workspaces
 - `npm run lint` - Run ESLint on all files
 - `npm run format` - Format code with Prettier
 
 From the app directory:
+
 - `npm run dev` - Start the Vite development server
 - `npm run build` - Build the app for production
 - `npm test` - Run tests with Vitest
