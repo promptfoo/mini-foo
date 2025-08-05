@@ -30,7 +30,7 @@
     "@types/node": "^24.2.0",
     "nodemon": "^3.1.10",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=20"
