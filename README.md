@@ -7,6 +7,7 @@ Evaluation results viewer with React frontend and Express backend.
 **Prerequisites:** Node.js ≥20
 
 ```bash
+npm install
 npm start
 ```
 
