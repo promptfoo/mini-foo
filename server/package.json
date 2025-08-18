@@ -7,7 +7,7 @@
   "scripts": {
     "test": "tsx --test src/**/*.test.ts",
     "bootstrap": "tsx bootstrap.ts",
-    "start": "tsx bootstrap.ts && nodemon --exec tsx src/index.ts",
+    "start": "tsx bootstrap.ts && nodemon",
     "build": "tsc --noEmit"
   },
   "author": "Promptfoo Team",
@@ -34,5 +34,23 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src",
+      "bootstrap.ts",
+      "sample_data.ts"
+    ],
+    "ext": "ts,js,json",
+    "ignore": [
+      "node_modules",
+      "dist",
+      "*.test.ts",
+      "db.sqlite"
+    ],
+    "exec": "tsx src/index.ts",
+    "env": {
+      "NODE_ENV": "development"
+    }
   }
 }
