@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 
 app.listen(8085, () => {
-  console.log('Server started on port 8085');
+  // Server started
 });
 
 app.get('/evals', (req, res) => {
