@@ -15,7 +15,7 @@ npm start
 
 ## Development
 
-- `npm test` - Run all tests  
+- `npm test` - Run all tests
 - `npm run lint` - Lint code
 - `npm run format` - Format code
 
@@ -26,5 +26,5 @@ npm start
 ## Architecture
 
 - **Frontend:** React + TypeScript + Vite (port 3007)
-- **Backend:** Express + SQLite + TypeScript (port 8085) 
+- **Backend:** Express + SQLite + TypeScript (port 8085)
 - **Database:** Auto-initialized with sample data
