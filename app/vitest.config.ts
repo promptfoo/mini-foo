@@ -13,5 +13,9 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
       exclude: ['node_modules/', 'src/setupTests.ts'],
     },
+    // Ensure proper React act environment
+    env: {
+      IS_REACT_ACT_ENVIRONMENT: 'true',
+    },
   },
 });
