@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { act } from 'react';
+import { act } from '@testing-library/react';
 import { vi } from 'vitest';
 import App from './App';
 
