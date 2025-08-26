@@ -25,18 +25,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-          cache: 'npm'
 
-      - name: Install dependencies
+      - name: Clean install dependencies
         run: |
-          # Workaround for npm optional dependency bug with Rollup
-          # See: https://github.com/npm/cli/issues/4828
-          if ! npm ci; then
-            echo "npm ci failed, trying workaround for optional dependency bug"
-            rm -rf node_modules package-lock.json
-            npm install
-          fi
-          # Force rebuild of native modules to ensure compatibility
+          # Always do a fresh install to avoid caching issues
+          rm -rf node_modules package-lock.json
+          npm install
           npm rebuild
 
       - name: Run linter
@@ -90,18 +84,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-          cache: 'npm'
 
-      - name: Install dependencies
+      - name: Clean install dependencies
         run: |
-          # Workaround for npm optional dependency bug with Rollup
-          # See: https://github.com/npm/cli/issues/4828
-          if ! npm ci; then
-            echo "npm ci failed, trying workaround for optional dependency bug"
-            rm -rf node_modules package-lock.json
-            npm install
-          fi
-          # Force rebuild of native modules to ensure compatibility
+          # Always do a fresh install to avoid caching issues
+          rm -rf node_modules package-lock.json
+          npm install
           npm rebuild
 
       - name: Run security audit
