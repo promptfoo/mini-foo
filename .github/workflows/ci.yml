@@ -48,7 +48,7 @@ jobs:
       - name: Run app tests
         run: |
           cd app
-          npm test -- --run
+          npm test -- --run --reporter=verbose 2>&1 | tee test-output.log || (cat test-output.log && exit 1)
         env:
           CI: true
           NODE_OPTIONS: "--max_old_space_size=4096"
