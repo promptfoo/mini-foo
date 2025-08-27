@@ -14,4 +14,8 @@ configure({
 
 // Enable React act environment for proper test behavior
 // This is required for React 19 with Vitest
-(globalThis as any).IS_REACT_ACT_ENVIRONMENT = true;
+declare global {
+  var IS_REACT_ACT_ENVIRONMENT: boolean;
+}
+
+globalThis.IS_REACT_ACT_ENVIRONMENT = true;
