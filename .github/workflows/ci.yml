@@ -48,9 +48,12 @@ jobs:
       - name: Run app tests
         run: |
           cd app
-          npm test -- --run --reporter=verbose 2>&1 | tee test-output.log || (cat test-output.log && exit 1)
+          # First try to see if vitest runs at all
+          echo "Testing vitest availability..."
+          npx vitest --version
+          echo "Running tests with basic config..."
+          CI=true npx vitest run --reporter=basic --no-coverage --pool=forks
         env:
-          CI: true
           NODE_OPTIONS: "--max_old_space_size=4096"
 
       - name: Type check server
