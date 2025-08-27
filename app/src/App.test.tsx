@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { act } from '@testing-library/react';
 import App from './App';
 
-test.skip('renders evaluation results header', async () => {
+test('renders evaluation results header', async () => {
   await act(async () => {
     render(<App />);
   });
@@ -11,7 +11,7 @@ test.skip('renders evaluation results header', async () => {
   expect(headerElement).toBeInTheDocument();
 });
 
-test.skip('renders evaluation dropdown', async () => {
+test('renders evaluation dropdown', async () => {
   await act(async () => {
     render(<App />);
   });

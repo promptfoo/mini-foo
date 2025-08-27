@@ -46,18 +46,13 @@ jobs:
         run: npm test -w server
 
       - name: Run app tests
-        run: |
-          cd app
-          echo "App tests temporarily disabled due to CI environment issues"
-          echo "Tests pass locally but fail in GitHub Actions runner"
-          echo "This is a Dependabot PR to update concurrently from 9.2.0 to 9.2.1"
-          echo "The dependency update is safe and tests work locally"
-          exit 0
+        run: npm test -w mini-foo-app -- --run
+        env:
+          CI: true
+          NODE_OPTIONS: "--max_old_space_size=4096"
 
       - name: Type check server
-        run: |
-          echo "Server type check temporarily disabled due to CI issues"
-          exit 0
+        run: npx tsc --noEmit -p server/tsconfig.json
 
       - name: Type check app
         run: npx tsc --noEmit -p app/tsconfig.json
