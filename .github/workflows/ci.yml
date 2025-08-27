@@ -55,7 +55,13 @@ jobs:
           exit 0
 
       - name: Type check server
-        run: npx tsc --noEmit -p server/tsconfig.json
+        run: |
+          echo "Checking server dependencies..."
+          ls -la server/node_modules/ || echo "No server node_modules"
+          npm ls -w server typescript || echo "typescript not found in server"
+          cd server
+          npx tsc --version
+          npx tsc --noEmit
 
       - name: Type check app
         run: npx tsc --noEmit -p app/tsconfig.json
