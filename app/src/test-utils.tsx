@@ -1,26 +1,15 @@
-import React from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import { render, RenderOptions, waitFor, screen } from '@testing-library/react';
 import { expect } from 'vitest';
+import type { ReactElement, ReactNode } from 'react';
 
 // Custom render function that includes providers
 // This is useful when you add context providers, routers, etc.
 
 type CustomRenderOptions = Omit<RenderOptions, 'wrapper'>;
 
-export function customRender(
-  ui: React.ReactElement,
-  options?: CustomRenderOptions
-) {
-  const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+export function customRender(ui: ReactElement, options?: CustomRenderOptions) {
+  const AllTheProviders = ({ children }: { children: ReactNode }) => {
     // Add providers here as your app grows
-    // Example:
-    // return (
-    //   <ThemeProvider>
-    //     <RouterProvider>
-    //       {children}
-    //     </RouterProvider>
-    //   </ThemeProvider>
-    // );
     return <>{children}</>;
   };
 
@@ -37,7 +26,7 @@ export { customRender as render };
 interface MockEval {
   id: number;
   name: string;
-  results: unknown[];
+  results: MockEvalResult[];
 }
 
 interface MockEvalResult {
@@ -67,8 +56,6 @@ export const mockEvalResult = (
 });
 
 // Common test utilities
-import { waitFor, screen } from '@testing-library/react';
-
 export const waitForLoadingToFinish = () =>
   waitFor(() => {
     expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
