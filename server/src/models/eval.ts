@@ -107,7 +107,10 @@ export class Eval {
       query.run('UPDATE evals SET name = ? WHERE id = ?', this.name, this.id);
     } else {
       // Insert
-      const result = query.run('INSERT INTO evals (name) VALUES (?)', this.name);
+      const result = query.run(
+        'INSERT INTO evals (name) VALUES (?)',
+        this.name
+      );
       this.id = result.lastInsertRowid;
     }
   }

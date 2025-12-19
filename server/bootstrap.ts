@@ -11,11 +11,15 @@ query.exec(
 
 const insertEvals = () => {
   // Check if data already exists
-  const result = query.get<{ count: number }>('SELECT COUNT(*) as count FROM evals');
+  const result = query.get<{ count: number }>(
+    'SELECT COUNT(*) as count FROM evals'
+  );
   const existingCount = result?.count ?? 0;
 
   if (existingCount === 0) {
-    const stmt = query.prepare('INSERT OR IGNORE INTO evals (id, name) VALUES (?, ?)');
+    const stmt = query.prepare(
+      'INSERT OR IGNORE INTO evals (id, name) VALUES (?, ?)'
+    );
 
     evals.forEach((eval_) => {
       stmt.run(eval_.id, eval_.name);
@@ -29,7 +33,9 @@ const insertEvals = () => {
 
 const insertEvalResults = () => {
   // Check if data already exists
-  const result = query.get<{ count: number }>('SELECT COUNT(*) as count FROM eval_results');
+  const result = query.get<{ count: number }>(
+    'SELECT COUNT(*) as count FROM eval_results'
+  );
   const existingCount = result?.count ?? 0;
 
   if (existingCount === 0) {

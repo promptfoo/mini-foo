@@ -1,2 +1,2 @@
-22
-# Note: Project requires Node 22+
+24
+# Note: Project requires Node 24+ (for built-in node:sqlite)
