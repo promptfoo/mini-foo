@@ -5,9 +5,9 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "test": "tsx --test src/**/*.test.ts",
-    "bootstrap": "tsx bootstrap.ts",
-    "start": "tsx bootstrap.ts && nodemon",
+    "test": "node --no-warnings=ExperimentalWarning --import tsx --test src/**/*.test.ts",
+    "bootstrap": "node --no-warnings=ExperimentalWarning --import tsx bootstrap.ts",
+    "start": "node --no-warnings=ExperimentalWarning --import tsx bootstrap.ts && nodemon",
     "build": "tsc --noEmit"
   },
   "author": "Promptfoo Team",
@@ -19,12 +19,10 @@
     "typescript"
   ],
   "dependencies": {
-    "better-sqlite3": "^12.5.0",
     "cors": "^2.8.5",
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.13",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^24.10.1",
@@ -33,7 +31,7 @@
     "typescript": "^5.9.3"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "nodemonConfig": {
     "watch": [
@@ -48,7 +46,7 @@
       "*.test.ts",
       "db.sqlite"
     ],
-    "exec": "tsx src/index.ts",
+    "exec": "node --no-warnings=ExperimentalWarning --import tsx src/index.ts",
     "env": {
       "NODE_ENV": "development"
     }
