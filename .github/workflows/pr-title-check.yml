@@ -30,6 +30,7 @@ jobs:
           scopes: |
             deps
             deps-dev
+            ci
           requireScope: false
           subjectPattern: ^(?![A-Z]).+$
           subjectPatternError: |
